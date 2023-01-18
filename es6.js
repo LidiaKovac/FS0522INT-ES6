@@ -1,5 +1,5 @@
 //default params
-const multiply = (first, second = 10) => {
+const multiply = (first, second = 10) => { //a "default" value to your parameters
   //if second is undefined, js will give it a value of 10
   return first * second
 }
@@ -62,13 +62,13 @@ const fetchMusic = () => {
     //   img.src = cover_medium
     // })
     .then(({data: foundMusic}) => { //medium short
+      //foundMusic >>>> array of songs
         //const foundMusic = music.data
-        const [firstSong] = foundMusic
+        const [firstSong] = foundMusic //firstSong is an object
 
         console.log(firstSong)
-        const { title, preview, album } = firstSong
-        console.log(firstSong.explict)
-        const { cover_medium } = album
+        const { title, preview, album: {cover_medium} } = firstSong //album is an object
+        // const { cover_medium } = album
         const h1 = document.querySelector("h1")
         const audio = document.querySelector("audio")
         const img = document.querySelector("img")
@@ -91,4 +91,49 @@ const fetchMusic = () => {
     //   })
 }
 
-fetchMusic()
+// fetchMusic()
+
+
+const user = {
+  name: "Lidia", 
+  age: 24
+}
+const user1 = {
+  name: "Cristina", 
+  age: 24
+}
+const user2 = {
+  name: "Sabina", 
+  age: 24
+}
+const user3 = {
+  name: "Enrico", 
+  age: 24
+}
+
+const cousin = {
+  name: "Mattia", 
+  age: 24
+}
+const cousin2 = {
+  name: "Francesco", 
+  age: 24
+}
+
+
+const userInput = { //user inputs their email and password
+  email: "fakeemail@stonks.com",
+  password: "mydogsname"
+}
+
+const requestBody = {...user, ...userInput} 
+console.log(requestBody)
+
+const cousins = [cousin, cousin2]
+const closeRelatives = [user,user1,user2,user3]
+console.log("Lidia's cousins>>", cousins)
+console.log("Lidia's household>>", closeRelatives)
+
+const familyParty = [...cousins, ...closeRelatives]
+
+console.log("let's party!", familyParty)
